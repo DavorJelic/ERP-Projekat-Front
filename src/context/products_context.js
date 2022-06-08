@@ -37,20 +37,20 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  // const fetchProducts = async(url) => {
+  // const fetchProducts = async() => {
   // dispatch({ type: GET_PRODUCTS_BEGIN });
   // try {
-  //   const respone = await axios.get('http://localhost:5000/api/products');
+  //   const respone = await axios.get('http://localhost:5000/api/event');
   //   const products = respone.data
   //   dispatch({type: GET_SINGLE_PRODUCT_SUCCESS, payload: products});
   // } catch (error) {
   // dispatch({type: GET_PRODUCTS_ERROR})
   // }
-  //
+  
   // }
 
   // useEffect(()=>{
-  //   fetchProducts(url);
+  //   fetchProducts();
   // },[])
 
   // const fetchSingleProduct = async (url) => {

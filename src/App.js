@@ -10,6 +10,8 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Invoices from "./pages/Invoices";
+import NewProduct from './pages/NewProduct'
 
 function App() {
   return (
@@ -19,6 +21,12 @@ function App() {
       <Switch>
         <Route exact path="/">
           <ProductsPage />
+        </Route>
+        <Route exact path="/newEvent">
+          <NewProduct />
+        </Route>
+        <Route exact path="/invoices">
+          <Invoices />
         </Route>
         <Route exact path="/login">
           <LoginPage />

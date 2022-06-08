@@ -1,11 +1,12 @@
 import React from "react";
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { FaShoppingCart, FaUserMinus, FaUserPlus, FaEye, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 import { UseAuthContext } from "../context/auth_context";
+import jwt from 'jwt-decode'
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
@@ -17,14 +18,28 @@ const CartButtons = () => {
     removeToken();
   };
 
+  if(token){
+    var jwtToken = jwt(token)
+  }
+
   return (
     <Wrapper className="cart-btn-wrapper">
+      {token && jwtToken.role === "ADMIN" && 
+        <Link to="/newEvent">
+          <FaPlus />
+        </Link>
+      }
+      {token && jwtToken.role === "ADMIN" ?
+      <Link to="/invoices">
+        <FaEye />
+      </Link> :
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
         Cart
         <span className="cart-container">
           <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
+      }
       {!token ? (
         <Link to="/login" className="auth-btn">
           Login

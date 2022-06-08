@@ -36,11 +36,15 @@ const LoginPage = () => {
       console.log("data", data);
       // localStorage.setItem("token", data.data);
       addToken(data.data);
-      const user = jwt(data.data);
-      console.log(user);
+      history.push("/");
+    }).catch(error => {
+      history.push("/login");
+      setCredentials({
+        username: "",
+        password: "",
+      });
+      alert("Wrong credentials!")
     });
-
-    history.push("/");
   };
 
   return (
@@ -69,7 +73,7 @@ const LoginPage = () => {
           <span></span>
           <label>Password</label>
         </div>
-        <div className="pass">Forgot Password?</div>
+        {/* <div className="pass">Forgot Password?</div> */}
         <input type="submit" value="Login" />
         <div className="signup_link">
           Not a member? <Link to="/register">Signup</Link>
